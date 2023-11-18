@@ -10,11 +10,18 @@ namespace MKJVHHI_MVC.Controllers
     {
         public ActionResult Index()
         {
+
+            var userID = TempData["UserId"];
+
+            TempData.Keep("UserId"); // Keep
+
             return View();
         }
 
         public ActionResult About()
         {
+            var userID = TempData["UserId"];
+
             ViewBag.Message = "Your application description page.";
 
             return View();
@@ -22,6 +29,8 @@ namespace MKJVHHI_MVC.Controllers
 
         public ActionResult Contact()
         {
+            var userID = TempData["UserId"];
+
             ViewBag.Message = "Your contact page.";
 
             return View();

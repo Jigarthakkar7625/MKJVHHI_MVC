@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18344ee653904e60bc54cc0218d02202" Name="Diagram1">
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.Audit" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.AuditTable" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.EmpAddress" Width="1.5" PointX="10" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.Employee" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.Employee_Task" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.EmployeeNew" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.Job_History" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.MyNewTable" Width="1.5" PointX="5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.sysdiagram" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.tblUser" Width="1.5" PointX="2.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.UserAddress" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDemoDatabase123Model.viewMyResult" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="MyDemoDatabase123Model.FK_EmpAddress_EmployeeNew" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDemoDatabase123Model.FK_Job_History_Employee_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDemoDatabase123Model.FK_MyNewTable_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDemoDatabase123Model.FK_UserAddress_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -4,6 +4,26 @@
     ViewBag.Title = "Index";
 }
 
+@Scripts.Render("~/bundles/jquery")
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+<script type="text/javascript">
+    debugger
+    // DOM
+
+    // Id > #
+    // Class > .
+    var abc = $("#UserName").val();
+
+</script>
+
+
 <h2>Index</h2>
 
 
@@ -16,138 +36,316 @@
 
 Temp Data Value =    @TempData["UserId"]
 
+@*@Html.DropDownListFor(x => x.UserId, (IEnumerable<SelectListItem>)Model.UserList, new { @id = "UserIdDropDown", @class = "form-control" })*@
 
-@using (Html.BeginForm("IndexPost", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+@*@using (Html.BeginForm("IndexPost", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+
+        @Html.LabelFor(x => x.UserName)
+        @Html.TextBoxFor(x => x.UserName)
+        <br />
+        <br />
+
+        @Html.ActionLink("gO TO OTHER PAGE", "About", "Home")
+
+
+        <br />
+
+
+
+        <br />
+        @Html.CheckBoxFor(x => x.IsUserActive)
+
+        <br />
+
+
+
+
+
+
+        <label>MALE</label>
+        @Html.RadioButtonFor(x => x.Gender, "MALE")
+        <br />
+        <label>FEMALE</label>
+        @Html.RadioButtonFor(x => x.Gender, "FEMALE")
+
+        <br />
+
+
+
+        @Html.DropDownListFor(x => x.UserId, new SelectList((System.Collections.IEnumerable)ViewData["Users"], "UserId", "UserName"), new { @id = "UserIdDropDown", @class = "form-control" })
+
+
+
+
+        @Html.PasswordFor(x => x.UserId)
+
+        @Html.HiddenFor(x => x.UserId)
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+
+    }*@
+
+
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                int i = 0;
+            }
+
+            @foreach (var item in ViewBag.Users)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.UserId</td>
+                    <td>@item.UserName</td>
+
+                </tr>
+
+                {
+                    i++;
+                }
+            }
+
+        </tbody>
+    </table>*@
+
+
+
+
+
+
+
+
+
+
+@using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
 
-    @Html.TextBoxFor(x => x.UserName)
-    <br />
-    <br />
-
-    @Html.ActionLink("gO TO OTHER PAGE", "About", "Home")
-
-
-    <br />
-
-    @*@Html.Action("About", "Home")*@
-
-    <br />
-    @Html.CheckBoxFor(x => x.IsUserActive)
-
-    <br />
-
-
-
-
-
-
-    <label>MALE</label>
-    @Html.RadioButtonFor(x => x.Gender, "MALE")
-    <br />
-    <label>FEMALE</label>
-    @Html.RadioButtonFor(x => x.Gender, "FEMALE")
-
-    <br />
-
-    @*@Html.DropDownListFor(x => x.UserId, (IEnumerable<SelectListItem>)Model.UserList, new { @id = "UserIdDropDown", @class = "form-control" })*@
-
-    @Html.DropDownListFor(x => x.UserId, new SelectList((System.Collections.IEnumerable)ViewData["Users"], "UserId", "UserName"), new { @id = "UserIdDropDown", @class = "form-control" })
-
-
-
-
-    @Html.PasswordFor(x => x.UserId)
-
-    @Html.HiddenFor(x => x.UserId)
-
-
-
+<div class="form-horizontal">
+    <h4>UserModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
         </div>
     </div>
 
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <select id="ddlNationality"></select>
+
+            @*@Html.DropDownList(model => model.UserId)*@
+            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+            <br />
+            <input type="button" value="First BTN" id="btnButton" class="btn btn-default" data-value="Jigar" />
+            <br />
+            <br />
+            <input type="button" value="Second BTN" id="SecondButton" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+
+    <input type="checkbox" id="chkMyCourse" checked="checked" />
+
+    <p>
+        Jigar Thakkar
+    </p>
 }
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
+<style type="text/css">
+</style>
 
-        @{
-            int i = 0;
-        }
+<script type="text/javascript">
+    debugger
+    // DOM
+    $(document).ready(function () {
 
-        @foreach (var item in ViewBag.Users)
+        debugger
+
+        //var class13 = $("#chkMyCourse").attr("checked");
+        //var class13ss = $("#chkMyCourse").prop("checked");
+
+
+        var model =
         {
+            "FN": "Jigar",
+            "LN": "Thakkar",
 
-            <tr>
-                <td>@i</td>
-                <td>@item.UserId</td>
-                <td>@item.UserName</td>
+        } // Object
 
-            </tr>
-
+        var model = [
             {
-                i++;
+                FN: "Jigar",
+                LN: "Thakkar"
+
+            },
+            {
+                FN: "Vivek",
+                LN: "Patel"
+
             }
-        }
+            ,
+            {
+                FN: "Ishita",
+                LN: "Patel"
 
-    </tbody>
-</table>
-
-
-
-
-
+            }
+        ] // Object
 
 
+        //var JSonString = JSON.stringify(model) + "Jigar Thakkar";;
+
+        //var checkJson = JSON.parse(JSonString);
 
 
 
-@*@using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        $("p").remove(); // Element
+        $("p").empty(); // Text remove
 
-        <div class="form-horizontal">
-            <h4>UserModel</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                </div>
-            </div>
+        var getLength = $("#UserName123").length;
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+
+        var abc = $("#UserName").val(); // Getter
+
+        var abc = $("#UserName").val("Thakkar Jigar"); // Setter
+
+
+        $("#btnButton").click(function () {
+
+            debugger
+
+            $.ajax({
+                @*url: "@Url.Action("JSONMethodCalled", "Employees")",*@
+                url: "/User/GetJsonData",
+                type: "GET",      // The HTTP method to use for the request
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",   // The type of data that you're exerciseecting back
+                data: JSON.stringify(b),
+
+                error: function () {
+                    debugger
+                    // A function to be called if the request fails.
+                },
+                beforeSend: function () {
+                    debugger
+                    // A function to be called if before the request is made.
+                },
+                success: function (response) {
+                    debugger
+
+
+                    $.each(response, function (data, value) {
+
+                        $("#ddlNationality").append($("<option></option>").val(value.UserId).html(value.UserName));
+                    })
+                    // A function to be called if the request succeeds.
+                },
+                complete: function (response) {
+                    debugger
+                    // A function to be called when the request finishes
+                }
+            });
+
+
+            //$("#SecondButton").unbind("click", function () {
+            //    debugger
+            //    alert("SecondButton");
+            //})
+
+        })
+
+        //$("#btnButton").mouseenter(function () {
+
+        //    debugger
+
+        //    $(this).css("background-color", "red")
+
+
+        //})
+
+        //$("#btnButton").mouseleave(function () {
+
+        //    debugger
+        //    $(this).css("background-color", "Green")
+        //})
+
+    });
+</script>
+
+
+
